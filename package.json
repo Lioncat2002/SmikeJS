@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "babel --presets react main.js --out-dir build && cp ./Smike.js ./build/Smike.js &&  vite",
     "build": "vite build",
     "preview": "vite preview"
   },

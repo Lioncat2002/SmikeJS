@@ -1,12 +1,21 @@
 import Smike from "./Smike"
 
 /** @jsx Smike.createElement */
-const element=(
-    <div id="foo">
-        <a>bar</a>
-        <b/>
-    </div>
-)
-
 const container=document.getElementById("app")
-Smike.render(element,container)
+const updateValue = e => {
+    rerender(e.target.value)
+  }
+  
+  const rerender = value => {
+    const element = (
+      <div>
+        <input onInput={updateValue} value={value} />
+        <h2>Hello {value}</h2>
+      </div>
+    )
+    Smike.render(element, container)
+  }
+  
+  rerender("Smike")
+
+

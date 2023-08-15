@@ -1,16 +1,24 @@
-import Smike from "../Smike";
+import Smike from "./Smike";
 
 /** @jsx Smike.createElement */
-const element = Smike.createElement(
-    "div",
-    { id: "foo" },
-    Smike.createElement(
-        "a",
-        null,
-        "bar"
-    ),
-    Smike.createElement("b", null)
-);
-
 const container = document.getElementById("app");
-Smike.render(element, container);
+const updateValue = e => {
+  rerender(e.target.value);
+};
+
+const rerender = value => {
+  const element = Smike.createElement(
+    "div",
+    null,
+    Smike.createElement("input", { onInput: updateValue, value: value }),
+    Smike.createElement(
+      "h2",
+      null,
+      "Hello ",
+      value
+    )
+  );
+  Smike.render(element, container);
+};
+
+rerender("Smike");
